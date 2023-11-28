@@ -1,17 +1,27 @@
+"use client"
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
+import 'mapbox-gl/dist/mapbox-gl.css';
+import React from 'react';
+import Map from '@/components/map';
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
 // import styles from '../styles/Home.module.css'
 // import '@/styles/globals.css'
 import { usePicket } from '@picketapi/picket-react'
 import { cookieName } from '../utils/supabase'
 
+
+mapboxgl.accessToken = 'pk.eyJ1IjoibXVsdGl2ZXJzZW11ZmZpbiIsImEiOiJjam0zcXpyY24zY2pjM3FwNHc5czRseWc4In0.77WeoY_oiCK4I7vd8L8UZQ';
+
+
 type Props = {
   loggedIn: boolean
 }
 
-export default function Home(props: Props) {
+export default function Home(props: Props): React.FC {
+  const mapboxApiAccessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
   const { loggedIn } = props
   const { login, logout, authState } = usePicket()
   const router = useRouter()
@@ -53,15 +63,17 @@ export default function Home(props: Props) {
   }, [logout, router])
 
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
+    
+      <main>
         {loggedIn ? (
           <button onClick={handleLogout}>Log Out to Switch Wallets</button>
         ) : (
           <button onClick={handleLogin}>Log In with Your Wallet</button>
         )}
+       
       </main>
-    </div>
+
+    
   )
 }
 
