@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React from 'react';
-import Map from '@/components/map';
+import Map from '@/components/Map';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
 // import styles from '../styles/Home.module.css'
