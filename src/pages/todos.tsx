@@ -5,7 +5,7 @@ import { useState, useMemo } from 'react'
 import jwt from 'jsonwebtoken'
 import Cookies from 'js-cookie'
 
-import styles from '../styles/Home.module.css'
+
 
 import { getSupabase, cookieName } from '../utils/supabase'
 
@@ -33,13 +33,13 @@ export default function Todos(props: Props) {
   }, [])
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Picket 💜 Supabase</title>
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Your Personal Todo List</h1>
+      <main >
+        <h1 >Your Personal Todo List</h1>
         <div
           style={{
             maxWidth: '600px',

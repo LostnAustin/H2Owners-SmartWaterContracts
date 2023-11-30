@@ -1,12 +1,10 @@
-"use client"
+// "use client"
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React from 'react';
 
-
-// import styles from '../styles/Home.module.css'
 // import '@/styles/globals.css'
 import { usePicket } from '@picketapi/picket-react'
 import { cookieName } from '../utils/supabase'
@@ -61,16 +59,15 @@ export default function Home(props: Props){
   }, [logout, router])
 
   return (
-
+      <div>
       <main>
         {loggedIn ? (
           <button onClick={handleLogout}>Log Out to Switch Wallets</button>
         ) : (
           <button onClick={handleLogin}>Log In with Your Wallet</button>
         )}
-       
       </main>
-   
+      </div>
     
   )
 }
