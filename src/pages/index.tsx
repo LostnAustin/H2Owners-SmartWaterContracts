@@ -4,17 +4,14 @@ import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React from 'react';
-import Map from '@/components/Map';
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+
 
 // import styles from '../styles/Home.module.css'
 // import '@/styles/globals.css'
 import { usePicket } from '@picketapi/picket-react'
 import { cookieName } from '../utils/supabase'
-import Layout from '@/components/Layout';
+import Layout from '@/app/Layout';
 
-
-mapboxgl.accessToken = 'pk.eyJ1IjoibXVsdGl2ZXJzZW11ZmZpbiIsImEiOiJjam0zcXpyY24zY2pjM3FwNHc5czRseWc4In0.77WeoY_oiCK4I7vd8L8UZQ';
 
 
 type Props = {
@@ -64,7 +61,7 @@ export default function Home(props: Props){
   }, [logout, router])
 
   return (
-    <Layout>
+
       <main>
         {loggedIn ? (
           <button onClick={handleLogout}>Log Out to Switch Wallets</button>
@@ -73,7 +70,7 @@ export default function Home(props: Props){
         )}
        
       </main>
-      </Layout>
+   
     
   )
 }

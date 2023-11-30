@@ -8,6 +8,7 @@ export function useLocalState<S = undefined>(key: string, initial: S) {
         return JSON.parse(saved);
       }
     }
+    console.log(initial)
     return initial;
   });
 

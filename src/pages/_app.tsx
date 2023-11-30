@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import '@/styles/globals.css'
-import Layout from '@/components/Layout'
+import Layout from '@/app/Layout'
 import type { AppProps } from 'next/app'
 import React, { useRef, useEffect, useState } from 'react';
 import { PicketProvider } from '@picketapi/picket-react'
