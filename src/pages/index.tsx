@@ -42,7 +42,8 @@ export default function Home(props: Props){
       }),
     })
     // redirect to their todos page
-    router.push('/todos')
+    // router.push('/todos')
+    router.push('/WRowners')
   }, [authState, login, router])
 
   const handleLogout = useCallback(async () => {
@@ -67,7 +68,7 @@ export default function Home(props: Props){
           <button onClick={handleLogin}>Log In with Your Wallet</button>
         )}
       </main>
-      </div>
+          </div>
     
   )
 }

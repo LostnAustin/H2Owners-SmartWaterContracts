@@ -10,8 +10,8 @@ import Cookies from 'js-cookie'
 import { getSupabase, cookieName } from '../utils/supabase'
 
 type Owner = {
-  name: string
-  completed: boolean
+  Owners: string
+  
 }
 
 type Props = {
@@ -22,7 +22,8 @@ type Props = {
 const displayWalletAddress = (walletAddress: string) =>
   `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`
 
-export default function Owners(props: Props) {
+
+export default function WROwners(props: Props) {
   const { walletAddress } = props
   const [owners, setOwners] = useState(props.owners)
 
@@ -39,7 +40,7 @@ export default function Owners(props: Props) {
       </Head>
 
       <main>
-        <h1>Your Personal Todo List</h1>
+        <h1>WR Owner Information</h1>
         <div
           style={{
             maxWidth: '600px',
@@ -63,38 +64,25 @@ export default function Owners(props: Props) {
           }}
         >
           <h2>Owner List</h2>
-          {owners.map((owner) => (
+          {/* {owners.map((owner) => (
             <div
-              key={owner.name}
-              style={{
-                margin: '8px 0',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              {/* <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={async () => {
-                  await supabase.from('todos').upsert({
-                    wallet_address: walletAddress,
-                    name: todo.name,
-                    completed: !todo.completed,
-                  })
-                  setTodos((todos) =>
-                    todos.map((t) => (t.name === todo.name ? { ...t, completed: !t.completed } : t))
-                  )
-                }}
-              /> */}
-              <span
-                style={{
-                  margin: '0 0 0 8px',
-                }}
-              >
-                {owner.name}
-              </span>
-            </div>
-          ))}
+               key={owner.name}
+               style={{
+                 margin: '8px 0',
+                 display: 'flex',
+                 alignItems: 'center',
+               }}
+             >
+            
+               <span
+                 style={{
+                   margin: '0 0 0 8px',
+                 }}
+               >
+                 {owner.name}
+               </span>
+             </div>
+           ))} */}
           <div
             style={{
               margin: '24px 0',
@@ -149,22 +137,22 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ req }) => 
       .insert([
         {
           wallet_address: walletAddress,
-          name: 'Complete the Picket + Supabase Tutorial',
+          Owners: 'Complete the Picket + Supabase Tutorial',
           completed: true,
         },
         {
           wallet_address: walletAddress,
-          name: 'Create a Picket Account (https://picketapi.com/)',
+          Owners: 'Create a Picket Account (https://picketapi.com/)',
           completed: false,
         },
         {
           wallet_address: walletAddress,
-          name: 'Read the Picket Docs (https://docs.picketapi.com/)',
+          Owners: 'Read the Picket Docs (https://docs.picketapi.com/)',
           completed: false,
         },
         {
           wallet_address: walletAddress,
-          name: 'Build an Awesome Web3 Experience',
+          Owners: 'Build an Awesome Web3 Experience',
           completed: false,
         },
       ])
