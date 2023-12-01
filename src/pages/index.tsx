@@ -7,8 +7,8 @@ import '@/styles/globals.css'
 import { usePicket } from '@picketapi/picket-react'
 import { cookieName } from '../utils/supabase'
 // import Layout from '@/app/Layout';
-// import { StarsCanvas } from "@/components";
-import { EarthCanvas, StarsCanvas } from '@/components';
+import { StarsCanvas } from "@/components";
+import { EarthCanvas } from '@/components';
 import { motion } from 'framer-motion';
 import { slideIn } from '../utils/motion';
 
@@ -66,16 +66,21 @@ export default function Home(props: Props){
         {loggedIn ? (
           <button onClick={handleLogout}>Log Out to Switch Wallets</button>
         ) : (
-          <button onClick={handleLogin}>Log In with Your Wallet</button>
+          <button onClick={handleLogin}>Log In With Your Web3 Wallet</button>
         )}
       </main>
-      {/* <EarthCanvas />     */}
-           <StarsCanvas />
-           {/* <div
-        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-      >
-        <EarthCanvas />      
-      </div> */}
+      {/* <div className="relative z-0">
+          <StarsCanvas />
+      
+        </div> */}
+         
+           {/* <StarsCanvas /> */}
+           <div
+        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] bg-black"
+      > 
+         <EarthCanvas /> 
+       </div>
+      
         </div>
     
   )

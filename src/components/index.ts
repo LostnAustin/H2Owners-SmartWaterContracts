@@ -10,5 +10,5 @@ export {
     CustomButton,
     Footer,
     EarthCanvas,
-    StarsCanvas
+    StarsCanvas,
 }
