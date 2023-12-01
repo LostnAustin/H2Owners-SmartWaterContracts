@@ -1,15 +1,16 @@
-// "use client"
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React from 'react';
-
-// import '@/styles/globals.css'
+import '@/styles/globals.css'
 import { usePicket } from '@picketapi/picket-react'
 import { cookieName } from '../utils/supabase'
-import Layout from '@/app/Layout';
-
+// import Layout from '@/app/Layout';
+// import { StarsCanvas } from "@/components";
+import { EarthCanvas, StarsCanvas } from '@/components';
+import { motion } from 'framer-motion';
+import { slideIn } from '../utils/motion';
 
 
 type Props = {
@@ -60,7 +61,7 @@ export default function Home(props: Props){
   }, [logout, router])
 
   return (
-      <div>
+      <div className='container-fluid text-center text-3xl px-2 py-2'>
       <main>
         {loggedIn ? (
           <button onClick={handleLogout}>Log Out to Switch Wallets</button>
@@ -68,7 +69,14 @@ export default function Home(props: Props){
           <button onClick={handleLogin}>Log In with Your Wallet</button>
         )}
       </main>
-          </div>
+      {/* <EarthCanvas />     */}
+           <StarsCanvas />
+           {/* <div
+        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+      >
+        <EarthCanvas />      
+      </div> */}
+        </div>
     
   )
 }

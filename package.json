@@ -22,7 +22,13 @@
     "node": "20.10.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-map-gl": "^7.1.6"
+    "react-map-gl": "^7.1.6",
+    "three": "^0.149.0",
+    "maath": "^0.7.0",
+    "@react-three/drei": "^9.78.1",
+    "@react-three/fiber": "^8.13.4",
+    "default-passive-events": "^2.0.0",
+    "deps": "^1.0.0"
   },
   "devDependencies": {
     "@types/cookie": "^0.6.0",

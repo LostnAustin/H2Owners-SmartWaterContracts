@@ -4,28 +4,33 @@ import Link from 'next/link'
 import { useState, useMemo } from 'react'
 import jwt from 'jsonwebtoken'
 import Cookies from 'js-cookie'
+import { Button } from '@nextui-org/react'
 
 // import styles from '../styles/Home.module.css'
 
 import { getSupabase, cookieName } from '../utils/supabase'
+import { text } from 'stream/consumers'
 
-type Owner = {
-  Owners: string
-  
+type WrOwner = {
+  ID: number
+  Owner: string
+  WR_Typ: string
+  WR_Issue_Date: Date
 }
 
 type Props = {
   walletAddress: string
-  owners: Owner[]
+  owners: WrOwner[]
+  // typeOfRight: WrOwner[] 
 }
 
 const displayWalletAddress = (walletAddress: string) =>
   `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`
 
 
-export default function WROwners(props: Props) {
+export default function WrOwner(props: Props) {
   const { walletAddress } = props
-  const [owners, setOwners] = useState(props.owners)
+  const [owner, setOwner] = useState(props.owners)
 
   // avoid re-creating supabase client every render
   const supabase = useMemo(() => {
@@ -36,11 +41,14 @@ export default function WROwners(props: Props) {
   return (
     <div>
       <Head>
-        <title>Picket 💜 Supabase</title>
+        <title>H2Owners - Smart Contracts for Water Rights</title>
       </Head>
 
       <main>
-        <h1>WR Owner Information</h1>
+        <div className='banner'>
+          <h1 className='text-3xl font-bold underline py-2 px-4'>Welcome to H2Owners</h1>
+            <h2 className='text-2xl font-semibold py-2 px-4'> Smart contracts for water rights contracts, permits, and transfer!</h2>
+        </div>
         <div
           style={{
             maxWidth: '600px',
@@ -49,13 +57,14 @@ export default function WROwners(props: Props) {
             margin: '36px 0 24px 0',
           }}
         >
-          <p>Welcome {displayWalletAddress(walletAddress)},</p>
-          <p>
-            Your todo list is stored in Supabase and are only accessible to you and your wallet
-            address. Picket + Supabase makes it easy to build scalable, hybrid web2 and web3 apps.
-            Use Supabase to store non-critical or private data off-chain like user app preferences
-            or todo lists.
+          <p className='px-2 py-2'>Welcome {displayWalletAddress(walletAddress)},</p>
+          <p className='px-2 py-2'>
+            Your data related to water rights contracts and permits can be viewed and edited here.You can mint an NFT to represent your water rights upon approval. You can then monitor this dynamic NFT for changes to your contract!
           </p>
+
+          <Button className='button rounded-2xl py-4 px-4'>Mint Water Contract NFT 
+          </Button>
+
         </div>
         <div
           style={{
@@ -63,10 +72,10 @@ export default function WROwners(props: Props) {
             fontSize: '1.125rem',
           }}
         >
-          <h2>Owner List</h2>
-          {/* {owners.map((owner) => (
+          <h2>Owner Data</h2>
+          {owner.map((owner) => (
             <div
-               key={owner.name}
+               key={owner.Owner}
                style={{
                  margin: '8px 0',
                  display: 'flex',
@@ -74,15 +83,15 @@ export default function WROwners(props: Props) {
                }}
              >
             
-               <span
+               {/* <span
                  style={{
                    margin: '0 0 0 8px',
                  }}
                >
-                 {owner.name}
-               </span>
+                 {owner.Owner}
+               </span> */}
              </div>
-           ))} */}
+           ))}
           <div
             style={{
               margin: '24px 0',
@@ -116,6 +125,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ req }) => 
       props: {
         walletAddress: '',
         owners: [],
+        typeOfRight: []
       },
     }
   }
@@ -133,28 +143,22 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ req }) => 
   if (!data || data.length === 0) {
     let error = null
     ;({ data, error } = await supabase
-      .from('WRowners')
+      .from('WrOwners')
       .insert([
         {
           wallet_address: walletAddress,
-          Owners: 'Complete the Picket + Supabase Tutorial',
-          completed: true,
+          Owner: WrOwner
+          
+          // WR_Typ: string
+          // WR_Issue_Date
+          
         },
-        {
-          wallet_address: walletAddress,
-          Owners: 'Create a Picket Account (https://picketapi.com/)',
-          completed: false,
-        },
-        {
-          wallet_address: walletAddress,
-          Owners: 'Read the Picket Docs (https://docs.picketapi.com/)',
-          completed: false,
-        },
-        {
-          wallet_address: walletAddress,
-          Owners: 'Build an Awesome Web3 Experience',
-          completed: false,
-        },
+      
+        // {
+        //   wallet_address: walletAddress,
+        //   Owners: 'Build an Awesome Web3 Experience',
+        //   completed: false,
+        // },
       ])
       .select('*'))
 
@@ -176,7 +180,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ req }) => 
   return {
     props: {
       walletAddress,
-      owners: data as Owner[],
+      owners: data as WrOwner[],
     },
   }
 }
