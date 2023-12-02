@@ -10,9 +10,9 @@ const Map: React.FC<MapProps> = ({ mapboxApiAccessToken }) => {
   const [viewport, setViewport] = React.useState({
     width: '100%',
     height: '100%',
-    latitude: 37.7577, // default latitude
-    longitude: -122.4376, // default longitude
-    zoom: 8, // default zoom level
+    latitude: 30.2672, // default latitude
+    longitude: - 97.7431, // default longitude
+    zoom: 7, // default zoom level
   });
 
   return (

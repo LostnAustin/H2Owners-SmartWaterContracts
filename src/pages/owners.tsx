@@ -1,37 +1,81 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import jwt from 'jsonwebtoken'
 import Cookies from 'js-cookie'
 import { Button } from '@nextui-org/react'
+import { Map } from '../components'
 
 // import styles from '../styles/Home.module.css'
 
 import { getSupabase, cookieName } from '../utils/supabase'
 import { text } from 'stream/consumers'
 import React from 'react'
+import { id } from 'ethers/src.ts/utils'
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+
+mapboxgl.accessToken = 'pk.eyJ1IjoibXVsdGl2ZXJzZW11ZmZpbiIsImEiOiJjam0zcXpyY24zY2pjM3FwNHc5czRseWc4In0.77WeoY_oiCK4I7vd8L8UZQ';
+
 
 type WrOwner = {
   ID: number
   Owner: string
-  WR_Typ: string
+  WR_typ: string
   WR_Issue_Date: Date
+  Use: string
+  Divert_Amt: number
+  Prior_Class: string
 }
 
 type Props = {
   walletAddress: string
+  id: WrOwner[]
   owners: WrOwner[]
-  // typeOfRight: WrOwner[] 
+  wr_type: WrOwner[]
+  Divert_Amt: WrOwner[] 
+  use: WrOwner[]
+  Prior_Class: WrOwner[]
+  WR_Issue_Date: WrOwner[]
+  
 }
+
 
 const displayWalletAddress = (walletAddress: string) =>
   `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`
 
 
+
 export default function WrOwner(props: Props) {
+
+  useEffect(() => {
+    if (map.current) return; // initialize map only once
+    map.current = new mapboxgl.Map({
+    container: mapContainer.current,
+    style: 'mapbox://styles/mapbox/outdoors-v12',
+    // style: 'mapbox://styles/mapbox/standard-beta',
+    center: [lng, lat],
+    zoom: zoom,
+    
+    });
+    map.current.on('move', () => {
+      setLng(map.current.getCenter().lng.toFixed(4));
+      setLat(map.current.getCenter().lat.toFixed(4));
+      setZoom(map.current.getZoom().toFixed(2));
+      });
+    
+    });
+    
+
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+  const [lng, setLng] = useState(-97.7431);
+  const [lat, setLat] = useState(30.2672);
+  const [zoom, setZoom] = useState(6.42);
   const { walletAddress } = props
   const [owner, setOwner] = useState(props.owners)
+
+  
 
   // avoid re-creating supabase client every render
   const supabase = useMemo(() => {
@@ -60,11 +104,13 @@ export default function WrOwner(props: Props) {
         >
           <p className='px-2 py-2'>Hello  {displayWalletAddress(walletAddress)}</p>
           <p className='px-2 py-2'>
-            Your data related to water rights contracts and permits can be viewed and edited here.You can mint an NFT used to represent your water rights, upon approval by regulators. You can use this dynamic NFT to monitor changes to your water rights, permits, or transfers and sales!
+            Your data related to water rights contracts and permits can be viewed and edited here.You can mint an NFT used to represent your water rights, upon approval by regulators. You can use this dynamic NFT to monitor changes to your water rights, permits, or transfers, and sales!
           </p>
 
-          <Button className='button rounded-2xl py-4 px-4'>Mint Water Contract NFT 
-          </Button>
+          <Button
+          className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 ml-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+          // onClick={}
+          >Mint NFT</Button>
 
         </div>
         <div
@@ -73,7 +119,15 @@ export default function WrOwner(props: Props) {
             fontSize: '1.125rem',
           }}
         >
-          <h2>Owner Data</h2>
+          <div>
+          <div className="sidebar mb-10">
+            Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+          
+          <div ref={mapContainer} className="map-container mb-5" />
+          </div>
+          </div>
+
+          <h2 className='text-2xl ml-2 underline mt-2'>Owner Data</h2>
           {owner.map((owner) => (
             <div
                key={owner.Owner}
@@ -83,14 +137,31 @@ export default function WrOwner(props: Props) {
                  alignItems: 'center',
                }}
              >
-            
-               {/* <span
+             {/* <input
+                type="checkbox"
+                // checked={todo.completed}
+                onChange={async () => {
+                  await supabase.from('WRowners').upsert({
+                    wallet_address: walletAddress,
+                    name: owner.Owner,
+                    id: owner.ID
+                  })
+                  setTodos((todos) =>
+                    todos.map((t) => (t.name === todo.name ? { ...t, completed: !t.completed } : t))
+                  )
+                }}
+              /> */}
+
+
+
+
+               <span
                  style={{
                    margin: '0 0 0 8px',
                  }}
                >
                  {owner.Owner}
-               </span> */}
+               </span>
              </div>
            ))}
           <div
@@ -98,6 +169,7 @@ export default function WrOwner(props: Props) {
               margin: '24px 0',
             }}
           >
+            <div className='mt-5'>
             <Link
               href={'/'}
               style={{
@@ -106,6 +178,7 @@ export default function WrOwner(props: Props) {
             >
               Go back home &rarr;
             </Link>
+            </div>
           </div>
         </div>
       </main>
@@ -148,18 +221,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ req }) => 
       .insert([
         {
           wallet_address: walletAddress,
-          Owner: WrOwner
+          Owners: WrOwner,
+          // Owner: WrOwner
           
           // WR_Typ: string
           // WR_Issue_Date
-          
         },
       
-        // {
-        //   wallet_address: walletAddress,
-        //   Owners: 'Build an Awesome Web3 Experience',
-        //   completed: false,
-        // },
       ])
       .select('*'))
 
