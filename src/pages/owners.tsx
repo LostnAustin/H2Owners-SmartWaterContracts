@@ -10,6 +10,7 @@ import { Button } from '@nextui-org/react'
 
 import { getSupabase, cookieName } from '../utils/supabase'
 import { text } from 'stream/consumers'
+import React from 'react'
 
 type WrOwner = {
   ID: number
@@ -57,9 +58,9 @@ export default function WrOwner(props: Props) {
             margin: '36px 0 24px 0',
           }}
         >
-          <p className='px-2 py-2'>Welcome {displayWalletAddress(walletAddress)},</p>
+          <p className='px-2 py-2'>Hello  {displayWalletAddress(walletAddress)}</p>
           <p className='px-2 py-2'>
-            Your data related to water rights contracts and permits can be viewed and edited here.You can mint an NFT to represent your water rights upon approval. You can then monitor this dynamic NFT for changes to your contract!
+            Your data related to water rights contracts and permits can be viewed and edited here.You can mint an NFT used to represent your water rights, upon approval by regulators. You can use this dynamic NFT to monitor changes to your water rights, permits, or transfers and sales!
           </p>
 
           <Button className='button rounded-2xl py-4 px-4'>Mint Water Contract NFT 

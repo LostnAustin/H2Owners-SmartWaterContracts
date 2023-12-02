@@ -7,10 +7,10 @@ import '@/styles/globals.css'
 import { usePicket } from '@picketapi/picket-react'
 import { cookieName } from '../utils/supabase'
 // import Layout from '@/app/Layout';
-import { StarsCanvas } from "@/components";
-import { EarthCanvas } from '@/components';
-import { motion } from 'framer-motion';
-import { slideIn } from '../utils/motion';
+import { CustomButton, Footer, Navbar, StarsCanvas } from "@/components";
+import EarthDiv from '@/components/EarthDiv';
+import { Button } from '@nextui-org/react';
+
 
 
 type Props = {
@@ -62,25 +62,33 @@ export default function Home(props: Props){
 
   return (
       <div className='container-fluid text-center text-3xl px-2 py-2'>
+        <div className='bg-cover bg-no-repeat bg-center'>
+        <Navbar />
+        </div>
       <main>
-        {loggedIn ? (
-          <button onClick={handleLogout}>Log Out to Switch Wallets</button>
-        ) : (
-          <button onClick={handleLogin}>Log In With Your Web3 Wallet</button>
-        )}
-      </main>
-      {/* <div className="relative z-0">
+       
+        <div className="relative z-0 mt-10">
+           {/* <h2>Smart Water Contracts Dapp</h2> */}
+          <EarthDiv />
           <StarsCanvas />
-      
-        </div> */}
-         
-           {/* <StarsCanvas /> */}
-           <div
-        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] bg-black"
-      > 
-         <EarthCanvas /> 
-       </div>
-      
+        </div>
+          <div>
+          <h2>Connect a Web3 wallet to add or view your Account!</h2>
+          {loggedIn ? (
+          <button onClick={handleLogout}>Log Out to Switch Wallets</button>
+          ) : (
+          
+          <Button
+          className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+          title='Login'
+          // btnType='button'
+          // containerStyles='text-primary-blue rounded-full bg-white text-black text-center min-w-[130px]'
+          onClick={handleLogin}
+          >Login or Signup</Button>
+        )}
+        </div>
+      </main>
+      {/* <Footer /> */}
         </div>
     
   )
