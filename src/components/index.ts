@@ -4,7 +4,7 @@ import CustomButton from './CustomButton';
 import Footer from './Footer';
 import { EarthCanvas, StarsCanvas, } from './canvas'
 import EarthDiv from './EarthDiv';
-
+import About from './About'
 
 export {
     Map,
@@ -13,5 +13,6 @@ export {
     Footer,
     EarthCanvas,
     StarsCanvas,
-    EarthDiv
+    EarthDiv,
+    About
 }

@@ -10,6 +10,8 @@ import { cookieName } from '../utils/supabase'
 import { CustomButton, Footer, Navbar, StarsCanvas } from "@/components";
 import EarthDiv from '@/components/EarthDiv';
 import { Button } from '@nextui-org/react';
+import Link from 'next/link';
+
 
 
 
@@ -86,8 +88,11 @@ export default function Home(props: Props){
           >Login or Signup</Button>
         )}
         </div>
-      </main>
-      {/* <Footer /> */}
+           <div className='mt-4'>          <Link className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+          title='Login' href="/owners">Already Logged in? Click Here</Link>
+          </div>
+
+      </main>   
         </div>
     
   )

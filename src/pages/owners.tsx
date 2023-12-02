@@ -5,7 +5,7 @@ import { useState, useMemo, useRef, useEffect } from 'react'
 import jwt from 'jsonwebtoken'
 import Cookies from 'js-cookie'
 import { Button } from '@nextui-org/react'
-import { Map } from '../components'
+import { Map, Navbar } from '../components'
 
 // import styles from '../styles/Home.module.css'
 
@@ -14,6 +14,8 @@ import { text } from 'stream/consumers'
 import React from 'react'
 import { id } from 'ethers/src.ts/utils'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibXVsdGl2ZXJzZW11ZmZpbiIsImEiOiJjam0zcXpyY24zY2pjM3FwNHc5czRseWc4In0.77WeoY_oiCK4I7vd8L8UZQ';
 
@@ -84,27 +86,32 @@ export default function WrOwner(props: Props) {
   }, [])
 
   return (
+    
     <div>
       <Head>
         <title>H2Owners - Smart Contracts for Water Rights</title>
       </Head>
-
+      <div className='container-fluid text-center text-3xl px-2 pt-4'>
+    <div className='bg-cover bg-no-repeat bg-center pb-11'>
+        <Navbar />
+        </div>
       <main>
-        <div className='banner'>
-          <h1 className='text-3xl font-bold underline py-2 px-4'>Welcome to H2Owners</h1>
+        <div className='banner pt-5 mt-5'>
+          <h1 className='text-3xl font-bold underline pt-5 mt-5 py-2 px-4'>Welcome to H2Owners</h1>
             <h2 className='text-2xl font-semibold py-2 px-4'> Smart contracts for water rights contracts, permits, and transfer!</h2>
         </div>
         <div
           style={{
-            maxWidth: '600px',
-            textAlign: 'left',
+            container: 'fluid',
+            // maxWidth: '600px',
+            textAlign: 'center',
             fontSize: '1.125rem',
             margin: '36px 0 24px 0',
           }}
         >
           <p className='px-2 py-2'>Hello  {displayWalletAddress(walletAddress)}</p>
-          <p className='px-2 py-2'>
-            Your data related to water rights contracts and permits can be viewed and edited here.You can mint an NFT used to represent your water rights, upon approval by regulators. You can use this dynamic NFT to monitor changes to your water rights, permits, or transfers, and sales!
+          <p className='container-fluid text-left text-3xl px-2 pt-4'>
+            Your data related to water rights contracts and permits can be created, viewed and edited here.You can mint an NFT used to represent your water rights, upon approval by regulators. You can use this dynamic NFT to monitor changes to your water rights, permits, transfers, and sales!
           </p>
 
           <Button
@@ -119,15 +126,15 @@ export default function WrOwner(props: Props) {
             fontSize: '1.125rem',
           }}
         >
-          <div>
+          <div className='pt-5 pb-8 mb-3'>
           <div className="sidebar mb-10">
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
           
-          <div ref={mapContainer} className="map-container mb-5" />
+          <div ref={mapContainer} className="map-container" />
           </div>
           </div>
 
-          <h2 className='text-2xl ml-2 underline mt-2'>Owner Data</h2>
+          <h2 className='container text-2xl ml-2 underline mt-2 '>Owner Data</h2>
           {owner.map((owner) => (
             <div
                key={owner.Owner}
@@ -182,6 +189,7 @@ export default function WrOwner(props: Props) {
           </div>
         </div>
       </main>
+      </div>
     </div>
   )
 }

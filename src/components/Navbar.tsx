@@ -17,8 +17,8 @@ const Navbar = () => {
                     className='object-contain'
                 />
             </Link>
-            <Link href="/about">About Us</Link>
-            <Link href="/about">Contact</Link>
+            <Link href="/about">About</Link>
+            {/* <Link href="/about">Contact</Link> */}
         </nav>
     </header>
   )
