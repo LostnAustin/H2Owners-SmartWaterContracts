@@ -98,7 +98,7 @@ export default function WrOwner(props: Props) {
 
   return (
     
-    <div className='bg-sky-300 text-black'>
+    <div className='bg-gradient-to-b from-purple-600 to-blue-600 text-black'>
       <Head>
         <title>H2Owners - Smart Contracts for Water Rights</title>
       </Head>
@@ -173,13 +173,13 @@ export default function WrOwner(props: Props) {
                 }}
               /> */}
               
-              <form className='px-2 py-2 m-2' onSubmit={onSubmit}>
-                <input type="text" name="name" placeholder='Username'/>
-                <input type="text" name="wrType" placeholder='Water Right Type'/>
+              <form className='p-4 m-2 border-double hover:border-solid' onSubmit={onSubmit}>
+                <input type="text" name="name" placeholder='Username' />
+                <input type="text" name="wrType" placeholder='Water Right Type' />
                 <input type="text" name="use" placeholder='Use'/>
                 <input type="text" name="divert_amt" placeholder='Divert Amount'/>
                 <input type='text' name="basin" placeholder='Basin' />
-                <button type="submit">Submit</button>
+                <button type="submit" className='p-4'>Submit</button>
               </form>
 
 

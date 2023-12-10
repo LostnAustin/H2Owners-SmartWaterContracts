@@ -63,7 +63,7 @@ export default function Home(props: Props){
   }, [logout, router])
 
   return (
-    <div className='container-fluid text-center text-3xl px-2 py-2 bg-gray-950'>
+    <div className='container-fluid text-center text-3xl px-2 py-2 bg-gradient-to-b from-indigo-950 to-slate-950'>
     <div className='bg-cover bg-no-repeat bg-center'>
     <Navbar />
     </div>
