@@ -32,13 +32,26 @@ VRF consumer contract: 0x96aa444fa1eaa77258fafd12e7e8092aafc98227
 
 
 
-npx hardhat cross-chain-mint --source-minter SOURCE_MINTER_ADDRESS --source-blockchain avalancheFuji --destination-minter DESTINATION_MINTER_ADDRESS --destination-blockchain polygonMumbai --pay-fees-in Native
+Required .env variables:
 
 
-npx hardhat cross-chain-mint --source-minter 0x96AA444Fa1eaA77258FAFd12E7e8092AAfc98227 --source-blockchain avalancheFuji --destination-minter 0x3eFE7525d8E7a4b0E40fd826D7F07e0DB4df9C4S --destination-blockchain polygonMumbai (0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889)--pay-fees-in Native
+NEXT_PUBLIC_PICKET_PUBLISHABLE_KEY="pk_d9960d04426c1e9f3941bec7e39c8854"
+PICKET_PROJECT_SECRET_KEY="sk_e1f767d29fa6e533f2e5c62342fb9e24"
 
-npx hardhat cross-chain-mint --source-minter 0x96AA444Fa1eaA77258FAFd12E7e8092AAfc98227 --source-blockchain avalancheFuji --destination-blockchain polygonMumbai --destination-minter 0x3eFE7525d8E7a4b0E40fd826D7F07e0DB4df9C4S --pay-fees-in Native
+NEXT_PUBLIC_SUPABASE_URL='https://amtqlzbytgfajisewqaw.supabase.co'
+NEXT_PUBLIC_SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtdHFsemJ5dGdmYWppc2V3cWF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDExNTYxMjcsImV4cCI6MjAxNjczMjEyN30.1XUMeBdfcGblja85sAqBX0usF4EHvCHPFh9ytiiMPnM'
+
+SUPABASE_JWT_SECRET=""
+
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET=""
+
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=""
+NEXT_PUBLIC_PRIVATE_KEY=""
 
 
+# QuickNode rpc provider
+NEXT_PUBLIC_POLYGON_MUMBAI_RPC_URL=""
 
-npx hardhat cross-chain-mint --source-minter 0x96AA444Fa1eaA77258FAFd12E7e8092AAfc98227 --source-blockchain avalancheFuji --destination-blockchain polygonMumbai --destination-minter 0x3eFE7525d8E7a4b0E40fd826D7F07e0DB4df9C4S --pay-fees-in Native
+# Infura rpc provider
+NEXT_PUBLIC_AVALANCHE_FUJI_RPC_URL=""

@@ -98,7 +98,7 @@ export default function WrOwner(props: Props) {
 
   return (
     
-    <div className='bg-sky-300'>
+    <div className='bg-sky-300 text-black'>
       <Head>
         <title>H2Owners - Smart Contracts for Water Rights</title>
       </Head>
@@ -138,7 +138,7 @@ export default function WrOwner(props: Props) {
             fontSize: '1.125rem',
           }}
         >
-          <div className='pt-5 pb-8 mb-3 ml-6'>
+          <div className='pt-5 pb-8 mb-3 ml-6 '>
           <div className="sidebar mb-10">
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
           
