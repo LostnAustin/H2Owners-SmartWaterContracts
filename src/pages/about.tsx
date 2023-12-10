@@ -6,7 +6,7 @@ type Props = {}
 const About = (props: Props) => {
   return (
 
-    <div className='container-fluid text-center text-3xl px-2 pt-4'>
+    <div className='container-fluid text-center text-3xl px-2 pt-4 bg-sky-300'>
     <div className='bg-cover bg-no-repeat bg-center pb-11'>
         <Navbar />
         </div>

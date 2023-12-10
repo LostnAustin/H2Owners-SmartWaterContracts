@@ -63,7 +63,7 @@ export default function Home(props: Props){
   }, [logout, router])
 
   return (
-    <div className='container-fluid text-center text-3xl px-2 py-2'>
+    <div className='container-fluid text-center text-3xl px-2 py-2 bg-gray-950'>
     <div className='bg-cover bg-no-repeat bg-center'>
     <Navbar />
     </div>
@@ -83,7 +83,7 @@ export default function Home(props: Props){
       <StarsCanvas  />
     </div>
       <div>
-      <h2>Connect a Web3 wallet to add or view your Account!</h2>
+      <h1 className='text-white text-3xl'>Connect a Web3 wallet to add or view your Account!</h1>
       {loggedIn ? (
       <Button
       className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300" onClick={handleLogout}>Log Out to Switch Wallets</Button>

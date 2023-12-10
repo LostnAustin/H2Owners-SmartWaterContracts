@@ -18,7 +18,7 @@ const Navbar = () => {
                 className='object-contain bg-transparent'
             />
             </Link>
-            <Link href="/about">About</Link>
+            <Link  className="text-white" href="/about">About</Link>
             {/* <Link href="/about">Contact</Link> */}
         </nav>
     </header>

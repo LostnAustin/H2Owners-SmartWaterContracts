@@ -11,10 +11,10 @@ import { text } from 'stream/consumers'
 import React from 'react'
 import { id } from 'ethers/src.ts/utils'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
-
+import { FormEvent } from 'react'
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
-// mapboxgl.accessToken = 'pk.eyJ1IjoibXVsdGl2ZXJzZW11ZmZpbiIsImEiOiJjam0zcXpyY24zY2pjM3FwNHc5czRseWc4In0.77WeoY_oiCK4I7vd8L8UZQ';
+
 
 
 type WrOwner = {
@@ -46,6 +46,20 @@ const displayWalletAddress = (walletAddress: string) =>
 
 
 export default function WrOwner(props: Props) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+ 
+    const formData = new FormData(event.currentTarget)
+    const response = await fetch('/api/submit', {
+      method: 'POST',
+      body: formData,
+    })
+ 
+    // Handle response if necessary
+    const data = await response.json()
+    // ...
+  }
+
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -84,7 +98,7 @@ export default function WrOwner(props: Props) {
 
   return (
     
-    <div>
+    <div className='bg-sky-300'>
       <Head>
         <title>H2Owners - Smart Contracts for Water Rights</title>
       </Head>
@@ -106,7 +120,7 @@ export default function WrOwner(props: Props) {
             margin: '36px 0 24px 0',
           }}
         >
-          <p className='px-2 py-2'>Hello  {displayWalletAddress(walletAddress)}</p>
+          <h1 className='px-2 py-2 text-5xl'>Hello  {displayWalletAddress(walletAddress)}</h1>
           <p className='container-fluid text-left text-3xl px-2 pt-4'>
             Your data related to water rights contracts and permits can be created, viewed and edited here.You can mint an NFT used to represent your water rights. Upon approval by regulators, you can use this dynamic NFT to monitor changes to your water rights, permits, transfers, and sales!
           </p>
@@ -115,15 +129,16 @@ export default function WrOwner(props: Props) {
           className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 ml-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
           // onClick={}
           >Mint NFT</Button>
-
         </div>
+
+
         <div
           style={{
             textAlign: 'left',
             fontSize: '1.125rem',
           }}
         >
-          <div className='pt-5 pb-8 mb-3'>
+          <div className='pt-5 pb-8 mb-3 ml-6'>
           <div className="sidebar mb-10">
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
           
@@ -131,8 +146,9 @@ export default function WrOwner(props: Props) {
           </div>
           </div>
 
-          <h2 className='container text-2xl ml-2 underline mt-2 '>Owner Data</h2>
-          {owner.map((owner) => (
+          <h2 className='container text-2xl ml-2 underline mt-2 '>Water Rights Application</h2>
+            <h3 className='ml-2'>Edit Your Application Data</h3>
+          {/* {owner.map((owner) => ( */}
             <div
                key={owner.Owner}
                style={{
@@ -141,6 +157,7 @@ export default function WrOwner(props: Props) {
                  alignItems: 'center',
                }}
              >
+             
              {/* <input
                 type="checkbox"
                 // checked={todo.completed}
@@ -148,15 +165,22 @@ export default function WrOwner(props: Props) {
                   await supabase.from('WRowners').upsert({
                     wallet_address: walletAddress,
                     name: owner.Owner,
-                    id: owner.ID
+                    wr_type: 
                   })
                   setTodos((todos) =>
                     todos.map((t) => (t.name === todo.name ? { ...t, completed: !t.completed } : t))
                   )
                 }}
               /> */}
-
-
+              
+              <form className='px-2 py-2 m-2' onSubmit={onSubmit}>
+                <input type="text" name="name" placeholder='Username'/>
+                <input type="text" name="wrType" placeholder='Water Right Type'/>
+                <input type="text" name="use" placeholder='Use'/>
+                <input type="text" name="divert_amt" placeholder='Divert Amount'/>
+                <input type='text' name="basin" placeholder='Basin' />
+                <button type="submit">Submit</button>
+              </form>
 
 
                <span
@@ -164,16 +188,17 @@ export default function WrOwner(props: Props) {
                    margin: '0 0 0 8px',
                  }}
                >
-                 {owner.Owner}
+                 {/* {owner.Owner} */}
+                 {/* {owner.created_at} */}
                </span>
              </div>
-           ))}
+           
           <div
             style={{
               margin: '24px 0',
             }}
           >
-            <div className='mt-5'>
+            <div className='mt-5 px-2'>
             <Link
               href={'/'}
               style={{
