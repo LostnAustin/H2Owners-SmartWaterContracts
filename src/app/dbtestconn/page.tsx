@@ -14,3 +14,14 @@
 //   return <pre>{JSON.stringify(watercontracts, null, 2)}</pre> 
   
 // }
+import React from 'react'
+
+type Props = {}
+
+const page = (props: Props) => {
+  return (
+    <div>page</div>
+  )
+}
+
+export default page
