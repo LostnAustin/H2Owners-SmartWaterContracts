@@ -6,9 +6,6 @@ import jwt from 'jsonwebtoken'
 import Cookies from 'js-cookie'
 import { Button } from '@nextui-org/react'
 import { Map, Navbar } from '../components'
-
-// import styles from '../styles/Home.module.css'
-
 import { getSupabase, cookieName } from '../utils/supabase'
 import { text } from 'stream/consumers'
 import React from 'react'
@@ -16,8 +13,8 @@ import { id } from 'ethers/src.ts/utils'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
 
-
-mapboxgl.accessToken = 'pk.eyJ1IjoibXVsdGl2ZXJzZW11ZmZpbiIsImEiOiJjam0zcXpyY24zY2pjM3FwNHc5czRseWc4In0.77WeoY_oiCK4I7vd8L8UZQ';
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+// mapboxgl.accessToken = 'pk.eyJ1IjoibXVsdGl2ZXJzZW11ZmZpbiIsImEiOiJjam0zcXpyY24zY2pjM3FwNHc5czRseWc4In0.77WeoY_oiCK4I7vd8L8UZQ';
 
 
 type WrOwner = {
@@ -111,7 +108,7 @@ export default function WrOwner(props: Props) {
         >
           <p className='px-2 py-2'>Hello  {displayWalletAddress(walletAddress)}</p>
           <p className='container-fluid text-left text-3xl px-2 pt-4'>
-            Your data related to water rights contracts and permits can be created, viewed and edited here.You can mint an NFT used to represent your water rights, upon approval by regulators. You can use this dynamic NFT to monitor changes to your water rights, permits, transfers, and sales!
+            Your data related to water rights contracts and permits can be created, viewed and edited here.You can mint an NFT used to represent your water rights. Upon approval by regulators, you can use this dynamic NFT to monitor changes to your water rights, permits, transfers, and sales!
           </p>
 
           <Button

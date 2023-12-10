@@ -46,7 +46,7 @@ export default function Home(props: Props){
     })
     // redirect to their todos page
     // router.push('/todos')
-    router.push('/WRowners')
+    router.push('/owners')
   }, [authState, login, router])
 
   const handleLogout = useCallback(async () => {
