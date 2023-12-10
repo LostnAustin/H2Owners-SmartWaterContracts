@@ -63,36 +63,46 @@ export default function Home(props: Props){
   }, [logout, router])
 
   return (
-      <div className='container-fluid text-center text-3xl px-2 py-2'>
-        <div className='bg-cover bg-no-repeat bg-center'>
-        <Navbar />
-        </div>
-      <main>
-       
-        <div className="relative z-0 mt-10">
-           {/* <h2>Smart Water Contracts Dapp</h2> */}
-          <EarthDiv />
-          <StarsCanvas />
-        </div>
-          <div>
-          <h2>Connect a Web3 wallet to add or view your Account!</h2>
-          {loggedIn ? (
-          <Button
-          className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300" onClick={handleLogout}>Log Out to Switch Wallets</Button>
-          ) : (
-          
-          <Button
-          className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
-          title='Login'
-          onClick={handleLogin}
-          >Login or Signup</Button>
-        )}
-        </div>
-           <div className='mt-4'>          <Link className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
-          title='Login' href="/owners">Already Logged in? Click Here</Link>
-          </div>
+    <div className='container-fluid text-center text-3xl px-2 py-2'>
+    <div className='bg-cover bg-no-repeat bg-center'>
+    <Navbar />
+    </div>
+  <main className='jumbotron'>
+  <style global jsx>{`
+  html,
+  main,
+  body,
+  body > div:first-child,
+  div#__next,
+  div#__next > div {
+    height: 100%;
+  }
+`}</style>
+    <div className="relative z-0 mt-10">
+      <EarthDiv />
+      <StarsCanvas  />
+    </div>
+      <div>
+      <h2>Connect a Web3 wallet to add or view your Account!</h2>
+      {loggedIn ? (
+      <Button
+      className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300" onClick={handleLogout}>Log Out to Switch Wallets</Button>
+      ) : (
+      
+      <Button
+      className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+      title='Login'
+      onClick={handleLogin}
+      >Login or Signup</Button>
+    )}
+    </div>
+    
+    <div className='mt-4'>
+      <Link className="rounded-full bg-white text-black px-2 py-2 mt-2 mb-2 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+      title='Login' href="/owners">Already Logged in? Click Here</Link>
+    </div>
 
-      </main>   
+  </main> 
         </div>
     
   )
