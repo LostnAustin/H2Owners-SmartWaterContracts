@@ -11,8 +11,13 @@ const About = (props: Props) => {
         <Navbar />
         </div>
         <main className='mt-10 pt-16'>
+        <h1 className='text-4xl ml-2'>Overview</h1>
+        <p>Water is the most valuable human resource, with only about 3% of the planet's available quantity being fresh water, and only a portion of that not locked in the form of glaciers or ice.
+Texas has two distinct legal systems governing water: groundwater and surface water. Surface water is owned by the state, which grants water rights to use specific volumes of water for beneficial uses. The Texas Water Code recognizes surface water rights issued in perpetuity as private rights that can be bought and sold and can only be canceled for nonuse over an extended period of time.
+Texas uses a prior appropriation system operates under the principle of “first in time, first in right,” meaning that older or “senior” rights are given precedence over newer or “junior” rights during times of water shortage. An exception to the prior appropriation system is the landowner’s qualified riparian rights for domestic and livestock use.
+</p>
         <h1 className='text-4xl ml-2'>Why Smart Water Contracts?</h1>
-            <p className='text-2xl ml-2'>Traditional Water Supply Contracts in Texas require a complex application process. An applicant for a Water Supply Contract must provide the following: </p>
+            <p className='text-2xl ml-2'>Traditional Water Supply Contracts in Texas require a complex, time consuming application process. An applicant for a Water Supply Contract must provide the following: </p>
     <ul className='container ml-5 mb-3 mt-2 text-lg '>
      <li className='ml-5 mb-3 mt-2'>1. A vicinity map(s) showing the diversion
       point and place of use</li>
@@ -28,8 +33,8 @@ const About = (props: Props) => {
     <p className='text-2xl ml-2 mb-5 p-4'>In order to submit this info, the applicant must submit <text className="italic">"One original and six copies of the application and supporting materials"</text> so that the varying INTEROPERABLE agencies can coordinate on the permit (Eg. TCEQ, TWDB, LCRA, etc.)</p>
 
     <h1 className='text-3xl'>Solution: Web3, Blockchain, and ChainLINK</h1>
-      <p className='text-2xl mb-5 p-4'>By utilizing web3 and blockchain, agencies and applicants are able to coordinate in a decentralized manner. The integration of a variety of ChainLINK products can significantly streamline the process. CCIP will allow the various agencies to independently create their own AVAX subnets and protocols, yet interact with other chains (in our use case Fuji and Mumbai testnets). </p>
-      <p className='text-2xl mb-5 p-4'>Automation can be achieved by utilizing ChainLINK keepers, data feeds, and external adaptors used for verifying water availability, permitting conditions, etc.</p>
+      <p className='text-2xl mb-5 p-4'>By utilizing web3 and blockchain, agencies and applicants are able to coordinate in a decentralized manner. The integration of a variety of ChainLINK products can significantly streamline the process. CCIP will allow the various agencies to operate their own protocols and data while being able to interact with other chains (in our use case Fuji and Mumbai testnets).  </p>
+      <p className='text-2xl mb-5 p-4'>Automation can be achieved by utilizing ChainLINK keepers, data feeds, and external adaptors used to create triggers for verifying water availability, permitting conditions, transfer or rights, etc. Dynamic, cross-chain NFT's can be utilized by customers to represent changes and the rights themselves.</p>
     </main>
     </div>
   )
