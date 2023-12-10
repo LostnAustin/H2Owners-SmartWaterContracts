@@ -76,6 +76,7 @@ export default function Home(props: Props){
   div#__next,
   div#__next > div {
     height: 100%;
+    
   }
 `}</style>
     <div className="relative z-0 mt-10">
