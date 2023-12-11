@@ -23,6 +23,10 @@ WrNFT LINK upkeep address: 0x28b89ed3d44440cc17c673e402706f5aa130731d
 Deployed WRPERMITNFT address: 0x4237765e6b151626930A77E330a7163fc0a5B1CB
 VRF consumer contract: 0x96aa444fa1eaa77258fafd12e7e8092aafc98227
 
+NFT unapproved/starting
+https://testnets.opensea.io/assets/mumbai/0x6255714717ac889ae39b072cdf55d388af467848/561386526762437806278385304346199290904255559752/
+
+NFT approved image (IPFS): https://peach-formal-cricket-122.mypinata.cloud/ipfs/QmQarSouZVSPqTeKzzPdjeDCK1uMgZDafMzhjoNEitDKdT/H2OwnersApproved.png
 
 
 4. Deploying the UI
